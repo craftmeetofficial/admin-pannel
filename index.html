@@ -3,372 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard — NK ACCOUNTS</title>
+  <title>NK ACCOUNTS — Premium Digital Marketplace</title>
+  <meta name="description" content="NK ACCOUNTS — Discover digital marketplace listings through a clean, modern, and premium browsing experience.">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    .admin-container {
-      max-width: 900px;
-      margin: 120px auto 60px auto;
-      padding: 0 20px;
-    }
-    .login-box, .dashboard-box {
-      background: #12121a;
-      border: 1px solid #1f1f2e;
-      border-radius: 12px;
-      padding: 30px;
-    }
-    .admin-card {
-      background: #1a1a26;
-      border: 1px solid #2a2a3d;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    .logout-btn {
-      background: #ff4757 !important;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .action-btn-group {
-      display: flex;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .btn-edit {
-      background: #ffa502;
-      color: #fff;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-    .btn-delete {
-      background: #ff4757;
-      color: #fff;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-  </style>
 </head>
 <body>
   <!-- Navigation -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="index.html" class="logo">
+      <a href="#home" class="logo">
         <span class="logo-nk">NK</span>
         <span class="logo-accounts">ACCOUNTS</span>
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#marketplace" class="nav-link">Browse Listings</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
-  <main class="admin-container">
-    <!-- Login Section -->
-    <div id="loginSection" class="login-box">
-      <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Admin Login</h2>
-      <form id="loginForm" class="contact-form">
-        <div class="form-group">
-          <label for="adminEmail">Email Address</label>
-          <input type="email" id="adminEmail" required placeholder="admin@nkaccounts.com">
-        </div>
-        <div class="form-group">
-          <label for="adminPassword">Password</label>
-          <input type="password" id="adminPassword" required placeholder="••••••••">
-        </div>
-        <button type="submit" class="btn btn-primary btn-full">Login to Dashboard</button>
-      </form>
-    </div>
-
-    <!-- Dashboard Section (Only visible when logged in) -->
-    <div id="dashboardSection" class="dashboard-box" hidden>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-        <h2 class="section-title" style="margin: 0; text-align: left;">Admin Control Panel</h2>
-        <button id="logoutBtn" class="logout-btn">Logout</button>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="hero-brand">NK ACCOUNTS</p>
+      <h1 class="hero-title">YOUR NEXT ACCOUNT.<br>YOUR NEXT LEVEL.</h1>
+      <p class="hero-desc">Discover digital marketplace listings through a clean, modern, and premium browsing experience.</p>
+      <div class="hero-buttons">
+        <a href="#marketplace" class="btn btn-primary">BROWSE LISTINGS</a>
+        <a href="#about" class="btn btn-outline">ABOUT US</a>
       </div>
+      <div class="hero-team">
+        <div class="team-item">
+          <span class="team-role">Website Creator</span>
+          <span class="team-name">Kaveesha Shehara</span>
+        </div>
+        <div class="team-divider"></div>
+        <div class="team-item">
+          <span class="team-role">Account Manager</span>
+          <span class="team-name">Navod Akalanka</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- Add / Edit Listing Form -->
-      <div class="admin-card" style="margin-bottom: 30px;">
-        <h3 id="formHeading" style="color: #fff; margin-bottom: 15px;">Add New Listing</h3>
-        <form id="addListingForm">
-          <input type="hidden" id="editListingId">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="listTitle">Listing Title</label>
-              <input type="text" id="listTitle" required placeholder="e.g. eBay Verified Seller Account">
-            </div>
-            <div class="form-group">
-              <label for="listCategory">Category</label>
-              <input type="text" id="listCategory" required placeholder="e.g. eBay">
-            </div>
+  <!-- Search & Filter -->
+  <section class="search-section" id="search">
+    <div class="container">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search listings by title, category or reference..." aria-label="Search listings">
+        <select id="sortSelect" aria-label="Sort listings">
+          <option value="default">Sort by: Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="title-asc">Title: A–Z</option>
+          <option value="title-desc">Title: Z–A</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <h2 class="section-title">Product Categories</h2>
+      <p class="section-subtitle">Filter by the type of digital product you need</p>
+      <div class="categories-grid" id="categoriesGrid">
+        <button class="category-btn active" data-category="all">All Listings</button>
+        <button class="category-btn" data-category="Gaming">Gaming</button>
+        <button class="category-btn" data-category="Streaming">Streaming</button>
+        <button class="category-btn" data-category="Software">Software</button>
+        <button class="category-btn" data-category="Social">Social Media</button>
+        <button class="category-btn" data-category="Productivity">Productivity</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketplace / Featured Listings -->
+  <section class="marketplace-section" id="marketplace">
+    <div class="container">
+      <h2 class="section-title">Browse Marketplace Listings</h2>
+      <p class="section-subtitle">Premium digital accounts & services — demo listings only</p>
+      <div class="listings-grid" id="listingsGrid">
+        <!-- Cards injected by JS -->
+      </div>
+      <p class="no-results" id="noResults" hidden>No listings match your search or filters.</p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Simple, secure, and straightforward</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Browse Listings</h3>
+          <p>Explore our curated marketplace of digital products. Use search and category filters to find exactly what you need.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Select & Wishlist</h3>
+          <p>Save interesting listings to your wishlist. View full details in a clean modal before deciding.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Contact & Purchase</h3>
+          <p>Reach out through the contact form. Our Account Manager will guide you through a secure transaction.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3>Receive Access</h3>
+          <p>Once confirmed, you receive delivery details. All demo listings here contain no real credentials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-subtitle">The team behind NK ACCOUNTS</p>
+      <div class="about-grid">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <span>KS</span>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="listPrice">Price ($)</label>
-              <input type="number" id="listPrice" required placeholder="45.00">
-            </div>
-            <div class="form-group">
-              <label for="listRef">Reference ID</label>
-              <input type="text" id="listRef" required placeholder="NK-0045">
-            </div>
+          <h3>Kaveesha Shehara</h3>
+          <p class="profile-role">Website Creator</p>
+          <p class="profile-bio">Designer and developer focused on building clean, high-performance digital experiences. Responsible for the complete vision, interface, and technical foundation of NK ACCOUNTS.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-avatar accent">
+            <span>NA</span>
+          </div>
+          <h3>Navod Akalanka</h3>
+          <p class="profile-role">Account Manager</p>
+          <p class="profile-bio">Handles client communication, listing quality, and secure delivery. Ensures every transaction is smooth, transparent, and professional from first inquiry to final handover.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">Have a question or ready to purchase? Send a message.</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name">
+            <span class="error-msg" id="nameError"></span>
           </div>
           <div class="form-group">
-            <label for="listDesc">Description</label>
-            <textarea id="listDesc" rows="3" required placeholder="Account details..."></textarea>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+            <span class="error-msg" id="emailError"></span>
           </div>
-          <div style="display: flex; gap: 10px;">
-            <button type="submit" id="submitBtn" class="btn btn-primary">Publish Listing</button>
-            <button type="button" id="cancelEditBtn" class="btn btn-outline" style="display:none;" onclick="resetForm()">Cancel Edit</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Manage Existing Listings -->
-      <div class="admin-card" style="margin-bottom: 30px;">
-        <h3 style="color: #fff; margin-bottom: 15px;">Manage Listings</h3>
-        <div id="manageListingsList">
-          <p style="color: #8a8a9e;">Loading listings...</p>
         </div>
-      </div>
-
-      <!-- Client Messages -->
-      <div class="admin-card">
-        <h3 style="color: #fff; margin-bottom: 15px;">Client Messages</h3>
-        <div id="messagesList">
-          <p style="color: #8a8a9e;">Loading messages...</p>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="e.g. Inquiry about listing NK-0042">
+          <span class="error-msg" id="subjectError"></span>
         </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell us what you need..."></textarea>
+          <span class="error-msg" id="messageError"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+        <div class="form-feedback" id="formFeedback" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-nk">NK</span>
+          <span class="logo-accounts">ACCOUNTS</span>
+        </a>
+        <p>Premium digital marketplace experience.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="#home">Home</a>
+        <a href="#marketplace">Browse Listings</a>
+        <a href="#categories">Categories</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-team">
+        <h4>Team</h4>
+        <p>Creator: Kaveesha Shehara</p>
+        <p>Manager: Navod Akalanka</p>
       </div>
     </div>
-  </main>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NK ACCOUNTS. All rights reserved. Demo listings only — no real credentials shown.</p>
+    </div>
+  </footer>
 
-  <!-- Firebase Script -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-    import { getDatabase, ref, push, set, update, remove, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyBXycN3dBMmSO2n3Dc2vQDmK_mOO3XJ22M",
-      authDomain: "nk-accounts.firebaseapp.com",
-      databaseURL: "https://nk-accounts-default-rtdb.firebaseio.com",
-      projectId: "nk-accounts",
-      storageBucket: "nk-accounts.firebasestorage.app",
-      messagingSenderId: "647793698356",
-      appId: "1:647793698356:web:3ee8a12ab0265f125b0c61",
-      measurementId: "G-BKPP3B4LVB"
-    };
+  <!-- Wishlist Toast -->
+  <div class="toast" id="toast" hidden></div>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const database = getDatabase(app);
-
-    const loginSection = document.getElementById("loginSection");
-    const dashboardSection = document.getElementById("dashboardSection");
-    const loginForm = document.getElementById("loginForm");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const messagesList = document.getElementById("messagesList");
-    const addListingForm = document.getElementById("addListingForm");
-    const manageListingsList = document.getElementById("manageListingsList");
-    const formHeading = document.getElementById("formHeading");
-    const submitBtn = document.getElementById("submitBtn");
-    const cancelEditBtn = document.getElementById("cancelEditBtn");
-    const editListingId = document.getElementById("editListingId");
-
-    let allListingsData = {};
-
-    // Login Handle
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = document.getElementById("adminEmail").value.trim();
-      const password = document.getElementById("adminPassword").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .catch((error) => {
-          alert("Login Failed: " + error.message);
-        });
-    });
-
-    // Logout Handle
-    logoutBtn.addEventListener("click", () => {
-      signOut(auth);
-    });
-
-    // Auth State
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        loginSection.hidden = true;
-        dashboardSection.hidden = false;
-        loadMessages();
-        loadManageListings();
-      } else {
-        loginSection.hidden = false;
-        dashboardSection.hidden = true;
-      }
-    });
-
-    // Add or Update Listing Form Submit
-    addListingForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const title = document.getElementById("listTitle").value.trim();
-      const category = document.getElementById("listCategory").value.trim();
-      const price = document.getElementById("listPrice").value.trim();
-      const refId = document.getElementById("listRef").value.trim();
-      const description = document.getElementById("listDesc").value.trim();
-      const listingId = editListingId.value;
-
-      const listingsRef = ref(database, 'listings');
-
-      if (listingId) {
-        // Update existing listing
-        const specificListingRef = ref(database, 'listings/' + listingId);
-        update(specificListingRef, {
-          title,
-          category,
-          price,
-          refId,
-          description
-        })
-        .then(() => {
-          alert("Listing updated successfully!");
-          resetForm();
-        })
-        .catch((error) => {
-          alert("Error updating: " + error.message);
-        });
-      } else {
-        // Add new listing
-        push(listingsRef, {
-          title,
-          category,
-          price,
-          refId,
-          description,
-          createdAt: new Date().toISOString()
-        })
-        .then(() => {
-          alert("Listing published successfully!");
-          addListingForm.reset();
-        })
-        .catch((error) => {
-          alert("Error: " + error.message);
-        });
-      }
-    });
-
-    // Load Listings for Management (Edit / Delete)
-    function loadManageListings() {
-      const listingsRef = ref(database, 'listings');
-      onValue(listingsRef, (snapshot) => {
-        const data = snapshot.val();
-        if (!data) {
-          manageListingsList.innerHTML = "<p style='color: #8a8a9e;'>No listings found.</p>";
-          allListingsData = {};
-          return;
-        }
-
-        allListingsData = data;
-        let html = "";
-        Object.keys(data).forEach((key) => {
-          const item = data[key];
-          html += `
-            <div style="background: #12121a; border: 1px solid #2a2a3d; padding: 15px; border-radius: 6px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <strong style="color: #fff; font-size: 1rem;">${item.title}</strong>
-                <div style="font-size: 0.85rem; color: #8a8a9e; margin-top: 3px;">Category: ${item.category} | Price: $${item.price} | Ref: ${item.refId}</div>
-              </div>
-              <div class="action-btn-group">
-                <button class="btn-edit" onclick="prepareEdit('${key}')">Edit</button>
-                <button class="btn-delete" onclick="deleteListing('${key}')">Delete</button>
-              </div>
-            </div>
-          `;
-        });
-        manageListingsList.innerHTML = html;
-      });
-    }
-
-    // Prepare Form for Editing
-    window.prepareEdit = function(key) {
-      const item = allListingsData[key];
-      if (!item) return;
-
-      editListingId.value = key;
-      document.getElementById("listTitle").value = item.title;
-      document.getElementById("listCategory").value = item.category;
-      document.getElementById("listPrice").value = item.price;
-      document.getElementById("listRef").value = item.refId;
-      document.getElementById("listDesc").value = item.description;
-
-      formHeading.textContent = "Edit Listing";
-      submitBtn.textContent = "Update Listing";
-      cancelEditBtn.style.display = "inline-block";
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Reset Form back to Add mode
-    window.resetForm = function() {
-      addListingForm.reset();
-      editListingId.value = "";
-      formHeading.textContent = "Add New Listing";
-      submitBtn.textContent = "Publish Listing";
-      cancelEditBtn.style.display = "none";
-    }
-
-    // Delete Listing Function
-    window.deleteListing = function(key) {
-      if (confirm("Are you sure you want to delete this listing?")) {
-        const itemRef = ref(database, 'listings/' + key);
-        remove(itemRef)
-          .then(() => {
-            alert("Listing deleted successfully!");
-          })
-          .catch((error) => {
-            alert("Error deleting: " + error.message);
-          });
-      }
-    }
-
-    // Load Messages
-    function loadMessages() {
-      const messagesRef = ref(database, 'contacts');
-      onValue(messagesRef, (snapshot) => {
-        const data = snapshot.val();
-        if (!data) {
-          messagesList.innerHTML = "<p style='color: #8a8a9e;'>No messages received yet.</p>";
-          return;
-        }
-
-        let html = "";
-        Object.keys(data).forEach((key) => {
-          const msg = data[key];
-          html += `
-            <div style="background: #12121a; border: 1px solid #2a2a3d; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
-              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: #8a8a9e; margin-bottom: 5px;">
-                <span>From: <strong>${msg.name}</strong> (${msg.email})</span>
-                <span>${new Date(msg.timestamp).toLocaleString()}</span>
-              </div>
-              <div style="font-weight: 600; color: #fff; margin-bottom: 5px;">Subject: ${msg.subject}</div>
-              <p style="color: #d1d1e0; font-size: 0.95rem; margin: 0;">${msg.message}</p>
-            </div>
-          `;
-        });
-        messagesList.innerHTML = html;
-      });
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
